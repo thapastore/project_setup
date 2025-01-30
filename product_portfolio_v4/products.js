@@ -939,6 +939,9 @@ const go = document.querySelector(".go");
             
            }
           });
+<<<<<<< HEAD
 
           
+=======
+>>>>>>> ec86fbf52e8728a26c96c2f6c4c10dc28c3b17d3
           

@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('#loginform');
+<<<<<<< HEAD
     const modalMessage = document.getElementById('modalMessage');
     const modal = document.getElementById('messageModal');
     const closeModal = document.querySelector('.close');
@@ -7,10 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Rate limiting variables
     const MAX_ATTEMPTS = 5; // Maximum login attempts
     const BLOCK_TIME = 1 * 60 * 1000; // Block time in milliseconds (10 minutes)
+=======
+>>>>>>> ec86fbf52e8728a26c96c2f6c4c10dc28c3b17d3
 
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
+<<<<<<< HEAD
         const email = document.getElementById('loginEmail').value.trim();
         const password = document.getElementById('loginPassword').value.trim();
 
@@ -102,4 +106,32 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'none';
         }
     }
+=======
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Login successful');
+            // Redirect to the desired page after login
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('userEmail', email);
+            
+            const redirectTo = sessionStorage.getItem('redirectAfterLogin') || result.redirectTo || '/';
+            window.location.href = redirectTo;
+
+        } else {
+            alert(result.error || 'Login failed');
+        }
+    });
+>>>>>>> ec86fbf52e8728a26c96c2f6c4c10dc28c3b17d3
 });
